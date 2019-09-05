@@ -9,8 +9,191 @@
 </head>
 <body>
     <header>
-        <nav></nav>
-        <div id="page-title"></div>
+        <nav>
+            <p>You are here: ►
+            <span><a href="#">Home </a></span>
+            ►
+            <span><a href="#">Dive Into HTML5 </a></span>
+            </p>
+        </nav>
+        <div id="page-title" >
+            <h1>№8<br>
+            Let's take this offline</h1>
+        </div>
+        <div id="table-content">
+            <span><a href="#">show table of contents</a></span>
+        </div>
     </header>
+    <main>
+        <p class="rotatedHeard">♠</p>
+        <h2>Diving In</h2>
+        <p>What is an offline web application? At first glance, it sounds like a 
+            contradiction in terms. Web pages are things you download and render. 
+            Downloading implies a network connection. How can you download when 
+            you’re offline? Of course, you can’t. But you <em>can</em> download when you’re 
+            online. And that’s how HTML5 offline applications work.
+        </p>
+        <p>   
+            At its simplest, 
+            an offline web application is a list of URLs — HTML, CSS, JavaScript, 
+            images, or any other kind of resource. The home page of the offline web 
+            application points to this list, called a manifest file, which is just a 
+            text file located elsewhere on the web server. A web browser that implements 
+            HTML5 offline applications will read the list of URLs from the manifest file, 
+            download the resources, cache them locally, and automatically keep the local 
+            copies up to date as they change. When the time comes that you try to access 
+            the web application without a network connection, your web browser will 
+            automatically switch over to the local copies instead.
+        </p>
+        <p>
+            From there, most of 
+            the work is up to you, the web developer. There’s a flag in the DOM that
+             will tell you whether you’re online or offline. There are events that fire 
+             when your offline status changes (one minute you’re offline and the next 
+             minute you’re online, or vice-versa). But that’s pretty much it. If your 
+             application creates data or saves state, it’s up to you to store that data 
+             locally while you’re offline and synchronize it with the remote server 
+             once you’re back online. In other words, HTML5 can take your web application 
+             offline. What you do once you’re there is up to you.
+        </p>
+        <table class="bc">
+            <caption>Offline Support</caption>
+            <thead>
+                <tr>
+                    <th>IE</th>
+                    <th>Firefox</th>
+                    <th>Safari</th>
+                    <th>Chrome</th>
+                    <th>Opera</th>
+                    <th>iPhone</th>
+                    <th>Android</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>.</td>
+                    <td>3.5+</td>
+                    <td>4.0+</td>
+                    <td>5.0+</td>
+                    <td>10.6+</td>
+                    <td>2.1+</td>
+                    <td>2.0+</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="rotatedHeard">♠</p>
+        <h2>The Cache manifest</h2>
+        <p>
+                An offline web application revolves around a cache manifest file. 
+                What’s a manifest file? It’s a list of all of the resources that 
+                your web application might need to access while it’s disconnected 
+                from the network. In order to bootstrap the process of downloading 
+                and caching these resources, you need to point to the manifest file, 
+                using a <code>manifest</code> attribute on your <code>&lt;head&gt;</code> element.
+        </p>
+        <pre>
+            &lt;!DOCTYPE html&gt;
+            &lt;html <mark>manifest="/cache.manifest"</mark>&gt;
+            &lt;body&gt;
+            ...
+            &lt;/body&gt;
+            &lt;/html&gt;
+        
+        </pre>
+        <p>
+                Your cache manifest file can be located anywhere on your web server,
+                but it must be served with the content type text/cache-manifest. If 
+                you are running an Apache-based web server, you can probably just 
+                put an AddType directive in the .htaccess file at the root of your web directory:
+        </p>
+        <pre>
+            <code>AddType text/cache-manifest .manifest</code>
+        </pre>
+        <p>
+                Then make sure that the name of your cache manifest file ends with .manifest. 
+                If you use a different web server or a different configuration of Apache, consult 
+                your server’s documentation on controlling the Content-Type header.
+        </p>
+        <div class="tips ">
+            <h4>Ask Proffesor Markup</h4>
+            <div class="inner">
+                <blockquote class="note">
+                    <p> <span class="rightPointFinger"></span>Q: My web application spans more than one page.
+                        Do I need a manifest attribute in each page, or can I just put it in the home page?</p>
+                    <p>
+                        
+                        A: Every page of your web application needs 
+                        a manifest attribute that points to the cache manifest for the entire application.
+                    </p>
+               
+                </blockquote>
+            </div>
+        </div>
+        <p class="rotatedHeard">♠</p>
+        <h2>Further reading</h2>
+        <p>Standarts:</p>
+        <ul>
+            <li>
+                <a href="#">Offline web applications</a> in the HTML5 specification
+            </li>
+        </ul>
+        <p>Browser vendor documentation</p>
+        <ul>
+            <li>
+                <a href="#">Offline resources in Firefox</a> 
+            </li>
+            <li>
+                <a href="#">HTML5 offline application cache</a>, part of the <a href="#"> Safari client-side storage and offline applications programming guide</a> 
+            </li>
+        </ul>
+        <p>Tutorials and demos:</p>
+        <ul>
+            <li>
+                <a href="#">Gmail for mobile HTML5 series: using appcache to launch offline - part 1</a> 
+            </li>
+            <li>
+                <a href="#">Gmail for mobile HTML5 series: using appcache to launch offline - part 2</a> 
+            </li>
+            <li>
+                <a href="#">Gmail for mobile HTML5 series: using appcache to launch offline - part 3</a> 
+            </li>
+            <li>
+                <a href="#">Debugging HTML5 offline application cache</a> 
+            </li>
+            <li>
+                <a href="#">an HTML5 offline image editor and uploader application</a> 
+            </li>
+            <li>
+                <a href="#">20 Things I Learned About Browsers and the Web</a> , an advanced demo that uses the application cache and other HTML5 techniques
+            </li>
+        </ul>
+        <p>HTML5 Offline Application Cache Tools:</p>
+        <ul>
+            <li><a href="#">Cache Manifest Validator</a>, an online validation service</li>
+            <li><a href="#">Manifesto</a>, a validation bookmarklet</li>
+        </ul>
+        <p class="rotatedHeard">♠</p>
+        <p>This has been “Let’s Take This Offline.” The<a href="#"> full table of contents</a> has more if you’d like to keep reading.</p>
+        <div class="tips ">
+                <h4>Did you know?</h4>
+                <div class="moneybag">
+                    <blockquote>
+                        <p> In association with Google Press, O’Reilly is distributing this book in a variety 
+                            of formats, including paper, ePub, Mobi, and DRM-free PDF. The paid edition is called 
+                            “HTML5: Up & Running,” and it is available now. This chapter is included in the paid edition.</p>
+                        <p>
+                            If you liked this chapter and want to show your appreciation, you can buy <a href="#">“HTML5: 
+                            Up & Running” with this affiliate link or buy an electronic edition directly from O’Reilly</a>. 
+                            You’ll get a book, and I’ll get a buck. I do not currently accept direct donations.
+                        </p>
+                    </blockquote>
+                </div>
+        </div>
+        <p class="footer-copyright-lable">Copyright MMIX–MMXI <a href="#">Mark Pilgrim</a></p>
+        <form action="index.html">
+            <input type="text" placeholder="powered by Yurii Voievidka">
+            <input type="button" value="Search">
+        </form>
+    </main>
 </body>
 </html>
